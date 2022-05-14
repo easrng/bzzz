@@ -1,0 +1,47 @@
+{
+  "short_name": "bzzz",
+  "name": "bzzz",
+  "icons": [
+    {
+      "src": "https://cdn.glitch.global/4c5ba83a-97eb-403e-9dff-124432da6770/favicon.ico?v=1652525926653",
+      "type": "image/x-icon",
+      "sizes": "16x16 32x32"
+    },
+    {
+      "src": "https://cdn.glitch.global/4c5ba83a-97eb-403e-9dff-124432da6770/icon-192.png?v=1652526033987",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "https://cdn.glitch.global/4c5ba83a-97eb-403e-9dff-124432da6770/icon-512.png?v=1652526039010",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "https://cdn.glitch.global/4c5ba83a-97eb-403e-9dff-124432da6770/icon-192-maskable.png?v=1652526035973",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "maskable"
+    },
+    {
+      "src": "https://cdn.glitch.global/4c5ba83a-97eb-403e-9dff-124432da6770/icon-512-maskable.png?v=1652526040616",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#FF4197",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#FF4197",
+  "description": "Control your phone's vibration.",
+  "screenshots": [
+    {
+      "src": "https://cdn.glitch.global/4c5ba83a-97eb-403e-9dff-124432da6770/Screenshot_20220514-081632.png?v=1652530696501",
+      "sizes": "1280x1920",
+      "type": "image/png",
+      "label": "The bzzz interface"
+    }
+  ]
+}
