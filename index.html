@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>bzzz</title>
+    <script>
+      if(location.protocol!="https:")location.protocol="https:"
+    </script>
+    <link
+      rel="icon"
+      href="https://cdn.glitch.global/4c5ba83a-97eb-403e-9dff-124432da6770/favicon.ico?v=1652525926653"
+      sizes="any"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="https://cdn.glitch.global/4c5ba83a-97eb-403e-9dff-124432da6770/apple-touch-icon.png?v=1652525922012"
+    />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#FF4197" />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+      body {
+        background: #ff4197;
+        color: #fff;
+        font-family: system-ui, sans-serif;
+        font-size: 1.2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        line-height: 1.5;
+        padding: 0.5rem;
+      }
+      .matter-button-contained {
+        --matter-helper-theme: var(
+          --matter-theme-rgb,
+          var(--matter-primary-rgb, 33, 150, 243)
+        );
+        --matter-helper-ontheme: var(
+          --matter-ontheme-rgb,
+          var(--matter-onprimary-rgb, 255, 255, 255)
+        );
+        position: relative;
+        display: inline-block;
+        box-sizing: border-box;
+        border: none;
+        border-radius: 4px;
+        padding: 0 16px;
+        min-width: 64px;
+        height: 36px;
+        vertical-align: middle;
+        text-align: center;
+        text-overflow: ellipsis;
+        color: rgb(var(--matter-helper-ontheme));
+        background-color: rgb(var(--matter-helper-theme));
+        box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2),
+          0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+        font-family: var(
+          --matter-font-family,
+          "Roboto",
+          "Segoe UI",
+          BlinkMacSystemFont,
+          system-ui,
+          -apple-system
+        );
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 36px;
+        outline: none;
+        cursor: pointer;
+        transition: box-shadow 0.2s;
+      }
+
+      .matter-button-contained::-moz-focus-inner {
+        border: none;
+      }
+
+      /* Highlight, Ripple */
+      .matter-button-contained::before,
+      .matter-button-contained::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: inherit;
+        opacity: 0;
+      }
+
+      .matter-button-contained::before {
+        background-color: rgb(var(--matter-helper-ontheme));
+        transition: opacity 0.2s;
+      }
+
+      .matter-button-contained::after {
+        background: radial-gradient(
+            circle at center,
+            currentColor 1%,
+            transparent 1%
+          )
+          center/10000% 10000% no-repeat;
+        transition: opacity 1s, background-size 0.5s;
+      }
+
+      /* Hover, Focus */
+      .matter-button-contained:hover,
+      .matter-button-contained:focus {
+        box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2),
+          0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
+      }
+
+      .matter-button-contained:hover::before {
+        opacity: 0.08;
+      }
+
+      .matter-button-contained:focus::before {
+        opacity: 0.24;
+      }
+
+      .matter-button-contained:hover:focus::before {
+        opacity: 0.32;
+      }
+
+      /* Active */
+      .matter-button-contained:active {
+        box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+          0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+      }
+
+      .matter-button-contained:active::after {
+        opacity: 0.32;
+        background-size: 100% 100%;
+        transition: background-size 0s;
+      }
+
+      /* Disabled */
+      .matter-button-contained:disabled {
+        color: rgba(var(--matter-onsurface-rgb, 0, 0, 0), 0.38);
+        background-color: rgba(var(--matter-onsurface-rgb, 0, 0, 0), 0.12);
+        box-shadow: none;
+        cursor: initial;
+      }
+
+      .matter-button-contained:disabled::before,
+      .matter-button-contained:disabled::after {
+        opacity: 0;
+      }
+
+      .matter-button-contained {
+        --matter-theme-rgb: 255, 255, 255;
+        --matter-ontheme-rgb: 93, 19, 53;
+        margin: 0.75rem;
+      }
+
+      .matter-button-contained:disabled {
+        color: #fee;
+      }
+      .matter-button-unelevated {
+        --matter-helper-theme: var(
+          --matter-theme-rgb,
+          var(--matter-primary-rgb, 33, 150, 243)
+        );
+        --matter-helper-ontheme: var(
+          --matter-ontheme-rgb,
+          var(--matter-onprimary-rgb, 255, 255, 255)
+        );
+        position: relative;
+        display: inline-block;
+        box-sizing: border-box;
+        border: none;
+        border-radius: 4px;
+        padding: 0 16px;
+        min-width: 64px;
+        height: 36px;
+        vertical-align: middle;
+        text-align: center;
+        text-overflow: ellipsis;
+        color: rgb(var(--matter-helper-ontheme));
+        background-color: rgb(var(--matter-helper-theme));
+        font-family: var(
+          --matter-font-family,
+          "Roboto",
+          "Segoe UI",
+          BlinkMacSystemFont,
+          system-ui,
+          -apple-system
+        );
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 36px;
+        outline: none;
+        cursor: pointer;
+      }
+
+      .matter-button-unelevated::-moz-focus-inner {
+        border: none;
+      }
+
+      /* Highlight, Ripple */
+      .matter-button-unelevated::before,
+      .matter-button-unelevated::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: inherit;
+        opacity: 0;
+      }
+
+      .matter-button-unelevated::before {
+        background-color: rgb(var(--matter-helper-ontheme));
+        transition: opacity 0.2s;
+      }
+
+      .matter-button-unelevated::after {
+        background: radial-gradient(
+            circle at center,
+            currentColor 1%,
+            transparent 1%
+          )
+          center/10000% 10000% no-repeat;
+        transition: opacity 1s, background-size 0.5s;
+      }
+
+      /* Hover, Focus */
+      .matter-button-unelevated:hover::before {
+        opacity: 0.08;
+      }
+
+      .matter-button-unelevated:focus::before {
+        opacity: 0.24;
+      }
+
+      .matter-button-unelevated:hover:focus::before {
+        opacity: 0.32;
+      }
+
+      /* Active */
+      .matter-button-unelevated:active::after {
+        opacity: 0.32;
+        background-size: 100% 100%;
+        transition: background-size 0s;
+      }
+
+      /* Disabled */
+      .matter-button-unelevated:disabled {
+        color: rgba(var(--matter-onsurface-rgb, 0, 0, 0), 0.38);
+        background-color: rgba(var(--matter-onsurface-rgb, 0, 0, 0), 0.12);
+        cursor: initial;
+      }
+
+      .matter-button-unelevated:disabled::before,
+      .matter-button-unelevated:disabled::after {
+        opacity: 0;
+      }
+
+      #edit {
+        background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0Ij48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTMgMTcuMjVWMjFoMy43NUwxNy44MSA5Ljk0bC0zLjc1LTMuNzVMMyAxNy4yNXpNMjAuNzEgNy4wNGMuMzktLjM5LjM5LTEuMDIgMC0xLjQxbC0yLjM0LTIuMzRjLS4zOS0uMzktMS4wMi0uMzktMS40MSAwbC0xLjgzIDEuODMgMy43NSAzLjc1IDEuODMtMS44M3oiIGZpbGw9IiNmZmYiLz48L3N2Zz4=");
+        color: transparent;
+        font-size: 0;
+        overflow: hidden;
+        width: 24px;
+        height: 24px;
+        background-repeat: no-repeat;
+        background-position: center;
+        min-width: 0;
+        padding: 0;
+        margin-left: 0.5rem;
+        flex-shrink: 0;
+      }
+
+      #roominfo {
+        display: flex;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="range" min="40" max="100" id="speed" />
+    <button
+      onclick="toggle.call(this)"
+      id="toggleVibe"
+      class="matter-button-contained"
+    >
+      Enable Vibration</button
+    ><br />
+    <label>
+      <input type="checkbox" checked onchange="speed.disabled=!this.checked" />
+      Allow local vibration changes
+    </label>
+    <br />
+    <button id="shareControl" disabled class="matter-button-contained">
+      Loading room...
+    </button>
+    <div id="awarenessDiv">&nbsp;<br />&nbsp;</div>
+    <script src="/nosleep.min.js"></script>
+    <script>
+      let vibing;
+      let s;
+      const nosleep = new NoSleep();
+      const updateS = () => {
+        s = +speed.value;
+        s = s < 95 ? (s < 45 ? 0 : s) : 1000;
+        if (window.map && window.map.get("level") != +speed.value) {
+          window.map.set("level", +speed.value);
+        }
+      };
+      speed.oninput = () => {
+        if (vibing && s >= 95) {
+          clearTimeout(vibing);
+          updateS();
+          vibe();
+        } else {
+          updateS();
+        }
+      };
+      function vibe() {
+        window.navigator.vibrate(s);
+        vibing = setTimeout(() => vibe(s), s);
+      }
+      function toggle() {
+        console.log(vibing);
+        if (vibing) {
+          nosleep.disable();
+          clearTimeout(vibing);
+          window.navigator.vibrate(0);
+          vibing = false;
+          this.textContent = "Enable Vibration";
+        } else {
+          nosleep.enable();
+          updateS();
+          clearTimeout(vibing);
+          vibe();
+          this.textContent = "Disable Vibration";
+        }
+      }
+    </script>
+    <script
+      type="module"
+      onerror="shareControl.textContent='Error';awarenessDiv.textContent='Whoops! There was an error setting up the room. You can still use the local controls.'"
+    >
+      import * as Y from "https://jspm.dev/yjs";
+      import { WebrtcProvider } from "https://jspm.dev/y-webrtc";
+      try {
+        const { objects, predicates } = await (
+          await fetch(
+            "https://unpkg.com/friendly-words@1.2.0/generated/words.json"
+          )
+        ).json();
+        let room;
+        if (location.hash.length > 1) {
+          room = location.hash.slice(1).replace(/[^a-z\-]/g, "");
+        } else {
+          room =
+            predicates[Math.round(Math.random() * (predicates.length - 1))] +
+            "-" +
+            predicates[Math.round(Math.random() * (predicates.length - 1))] +
+            "-" +
+            objects[Math.round(Math.random() * (objects.length - 1))];
+        }
+        history.replaceState(null, "", "/#" + room);
+        window.onhashchange = () => location.reload();
+        const roomhash = new Uint8Array(
+          await crypto.subtle.digest("sha-256", new TextEncoder().encode(room))
+        ).reduce((a, b) => a + b.toString(16).padStart(2, 0), "");
+        const ydoc = new Y.Doc();
+        // clients connected to the same room-name share document updates
+        const provider = new WebrtcProvider(roomhash.slice(0, 20), ydoc, {
+          password: roomhash.slice(20),
+        });
+        // All of our network providers implement the awareness crdt
+        const awareness = provider.awareness;
+        awareness.setLocalStateField("user", {});
+        awareness.on("update", (changes) => {
+          const count = Array.from(awareness.getStates().keys()).filter(
+            (e) => e != awareness.clientID
+          ).length;
+          peopleCount.textContent =
+            count == 0
+              ? "Nobody else is connected"
+              : count == 1
+              ? "1 other person is connected"
+              : count + " other people are connected";
+        });
+        window.addEventListener("beforeunload", () => {
+          awareness.setLocalState(null);
+        });
+        window.share = async () => {
+          try {
+            await navigator.share({
+              url: location.origin + "/" + location.hash,
+            });
+          } catch (err) {
+            if (!navigator.share)
+              prompt("Copy this link:", location.origin + "/" + location.hash);
+          }
+        };
+        shareControl.outerHTML =
+          '<button id="shareControl" onclick="share()" class="matter-button-contained">Share Control</button>';
+        awarenessDiv.innerHTML =
+          '<div id="roominfo"><span>Connected to <b>' +
+          room +
+          '</b></span> <button id="edit" class="matter-button-unelevated" onclick="let r=prompt(\'Enter a room name\');if(r)location.href=\'/#\'+r.replace(/[^a-z\\-]/g, \'\')">Change Room</button></div><div id="peopleCount">Nobody else is connected</div>';
+        const map = ydoc.getMap("info");
+        map.set("level", s);
+        map.observe(() => {
+          if (map.get("level") != s) {
+            speed.value = map.get("level");
+            speed.oninput();
+          }
+        });
+        window.Y = Y;
+        window.map = map;
+      } catch (e) {
+        console.error(e);
+        shareControl.textContent = "Error";
+        awarenessDiv.textContent =
+          "Whoops! There was an error setting up the room. You can still use the local controls.";
+      }
+    </script>
+    <script>
+      const registerServiceWorker = async () => {
+        if ("serviceWorker" in navigator) {
+          try {
+            const registration = await navigator.serviceWorker.register(
+              "/sw.js",
+              {
+                scope: "/",
+              }
+            );
+            if (registration.installing) {
+              console.log("Service worker installing");
+            } else if (registration.waiting) {
+              console.log("Service worker installed");
+            } else if (registration.active) {
+              console.log("Service worker active");
+            }
+          } catch (error) {
+            console.error(`Registration failed with ${error}`);
+          }
+        }
+      };
+      registerServiceWorker();
+    </script>
+  </body>
+</html>
