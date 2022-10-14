@@ -52,11 +52,14 @@
         width: 100%;
         height: 100%;
         overflow: hidden;
+        touch-action: none;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
       }
       body {
         background: #ff4197;
         color: #fff;
-        font-family: system-ui, sans-serif;
+        font-family: "Roboto", BlinkMacSystemFont, -apple-system, "Segoe UI", system-ui, sans-serif;
         font-size: 1.2rem;
         display: flex;
         flex-direction: column;
@@ -90,14 +93,7 @@
         background-color: rgb(var(--matter-helper-theme));
         box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2),
           0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
-        font-family: var(
-          --matter-font-family,
-          "Roboto",
-          "Segoe UI",
-          BlinkMacSystemFont,
-          system-ui,
-          -apple-system
-        );
+        font-family: inherit;
         font-size: 14px;
         font-weight: 500;
         line-height: 36px;
@@ -292,8 +288,8 @@
         opacity: 0;
       }
 
-      #edit {
-        background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0Ij48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTMgMTcuMjVWMjFoMy43NUwxNy44MSA5Ljk0bC0zLjc1LTMuNzVMMyAxNy4yNXpNMjAuNzEgNy4wNGMuMzktLjM5LjM5LTEuMDIgMC0xLjQxbC0yLjM0LTIuMzRjLS4zOS0uMzktMS4wMi0uMzktMS40MSAwbC0xLjgzIDEuODMgMy43NSAzLjc1IDEuODMtMS44M3oiIGZpbGw9IiNmZmYiLz48L3N2Zz4=");
+      #edit,
+      label[for="lockbox"] {
         color: transparent;
         font-size: 0;
         overflow: hidden;
@@ -303,7 +299,6 @@
         background-position: center;
         min-width: 0;
         padding: 0;
-        margin-left: 0.5rem;
         flex-shrink: 0;
       }
 
@@ -311,10 +306,71 @@
         display: flex;
         align-items: center;
       }
+
+      #lockbox {
+        display: none;
+      }
+      label[for="lockbox"] {
+        color: transparent;
+        background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTE4IDhoLTFWNmMwLTIuNzYtMi4yNC01LTUtNVM3IDMuMjQgNyA2aDJjMC0xLjY2IDEuMzQtMyAzLTNzMyAxLjM0IDMgM3YySDZjLTEuMSAwLTIgLjktMiAydjEwYzAgMS4xLjkgMiAyIDJoMTJjMS4xIDAgMi0uOSAyLTJWMTBjMC0xLjEtLjktMi0yLTJ6bTAgMTJINlYxMGgxMnYxMHptLTYtM2MxLjEgMCAyLS45IDItMnMtLjktMi0yLTItMiAuOS0yIDIgLjkgMiAyIDJ6IiBmaWxsPSIjZmZmIi8+PC9zdmc+");
+      }
+      #edit {
+        background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0Ij48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTMgMTcuMjVWMjFoMy43NUwxNy44MSA5Ljk0bC0zLjc1LTMuNzVMMyAxNy4yNXpNMjAuNzEgNy4wNGMuMzktLjM5LjM5LTEuMDIgMC0xLjQxbC0yLjM0LTIuMzRjLS4zOS0uMzktMS4wMi0uMzktMS40MSAwbC0xLjgzIDEuODMgMy43NSAzLjc1IDEuODMtMS44M3oiIGZpbGw9IiNmZmYiLz48L3N2Zz4=");
+        margin-left: 0.5rem;
+      }
+      #lockbox:checked ~ label[for="lockbox"] {
+        background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTE4IDhoLTFWNmMwLTIuNzYtMi4yNC01LTUtNVM3IDMuMjQgNyA2djJINmMtMS4xIDAtMiAuOS0yIDJ2MTBjMCAxLjEuOSAyIDIgMmgxMmMxLjEgMCAyLS45IDItMlYxMGMwLTEuMS0uOS0yLTItMnpNOSA2YzAtMS42NiAxLjM0LTMgMy0zczMgMS4zNCAzIDN2Mkg5VjZ6bTkgMTRINlYxMGgxMnYxMHptLTYtM2MxLjEgMCAyLS45IDItMnMtLjktMi0yLTItMiAuOS0yIDIgLjkgMiAyIDJ6IiBmaWxsPSIjZmZmIi8+PC9zdmc+");
+      }
+      #tip {
+        position: fixed;
+        z-index: 2;
+        bottom: 6%;
+        right: 4%;
+        text-align: center;
+        opacity: 0;
+        display: none;
+        transition: 0.5s ease opacity;
+      }
+      #tip svg {
+          width: 4.5rem;
+          opacity: 0.85;
+          animation-name: float;
+          animation-duration: 2s;
+          animation-iteration-count: infinite;
+          animation-direction: alternate;
+      }
+      @keyframes float {
+        0% {
+          transform: translateY(-1rem) rotate(-6deg);
+        }
+        100% {
+          transform: translateY(1rem) rotate(-6deg);
+        }
+      }
     </style>
   </head>
   <body>
-    <input type="range" min="40" max="100" id="speed" />
+    <canvas
+      id="graph"
+      height="100"
+      style="
+        position: fixed;
+        height: 80%;
+        height: 200px;
+        top: 10%;
+        z-index: -1;
+        width: 100%;
+      "
+    ></canvas>
+    <input
+      type="range"
+      value="40"
+      min="40"
+      max="200"
+      id="speed"
+      autocomplete="off"
+      style="display: none"
+    />
     <button
       onclick="toggle.call(this)"
       id="toggleVibe"
@@ -322,52 +378,136 @@
     >
       Enable Vibration</button
     ><br />
-    <label>
-      <input type="checkbox" checked onchange="speed.disabled=!this.checked" />
-      Allow local vibration changes
-    </label>
+    <input
+      type="checkbox"
+      onchange="(edit||{}).disabled=toggleVibe.disabled=shareControl.disabled=speed.disabled=window.hold=this.checked"
+      id="lockbox"
+    />
+    <label for="lockbox"> Lock </label>
     <br />
     <button id="shareControl" disabled class="matter-button-contained">
       Loading room...
     </button>
     <div id="awarenessDiv">&nbsp;<br />&nbsp;</div>
+    <div id="tip">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="#fff"
+      >
+        <g><rect fill="none" height="24" width="24"></rect></g>
+        <g>
+          <path
+            d="M19.98,14.82l-0.63,4.46C19.21,20.27,18.36,21,17.37,21h-6.16c-0.53,0-1.29-0.21-1.66-0.59L5,15.62l0.83-0.84 c0.24-0.24,0.58-0.35,0.92-0.28L10,15.24V4.5C10,3.67,10.67,3,11.5,3S13,3.67,13,4.5v6h0.91c0.31,0,0.62,0.07,0.89,0.21l4.09,2.04 C19.66,13.14,20.1,13.97,19.98,14.82z"
+          ></path>
+        </g>
+      </svg>
+      <div class="text" style="opacity: 0.6; font-size: 0.9rem; margin-top: 0.5rem">Drag to Control</div>
+    </div>
     <script src="/nosleep.min.js"></script>
+    <!--script src="//cdn.jsdelivr.net/npm/eruda"></script>
+    <script>
+      eruda.init();
+    </script-->
     <script>
       let vibing;
       let s;
+      let ctx = graph.getContext("2d");
+      let values = new Array(300).fill(40);
+      let startY;
+      let showTip;
+      let tipShowing;
+      window.addEventListener(
+        "load",
+        () =>
+          (showTip = setTimeout(() => {
+            tip.style.display = "block";
+            tipShowing=true
+            setTimeout(() => (tip.style.opacity = "1"), 1);
+          }, 3000))
+      );
+      document.body.addEventListener("pointerdown", (event) => {
+        event.preventDefault();
+        if (showTip) {
+          clearTimeout(showTip);
+          showTip = false;
+        }
+        if(tipShowing) {
+          tip.style.opacity = "0"
+            tipShowing=false
+            setTimeout(() => (tip.style.display = "none"), 600);
+        }
+        if (window.hold || !(event.isPrimary && event.buttons == 1)) return;
+        startY = event.screenY;
+      });
+      document.body.addEventListener("pointermove", (event) => {
+        event.preventDefault();
+        if (window.hold || !(event.isPrimary && event.buttons == 1)) return;
+        speed.value = +speed.value + (startY - event.screenY);
+        startY = event.screenY;
+        updateS();
+      });
+      let grd;
+      setInterval(() => {
+        if (graph.width != document.body.clientWidth * devicePixelRatio)
+          graph.width = document.body.clientWidth * devicePixelRatio;
+        if (graph.height != 200 * devicePixelRatio) {
+          graph.height = 200 * devicePixelRatio;
+          grd = ctx.createLinearGradient(0, 0, 0, graph.height);
+          grd.addColorStop(0, "#fff6");
+          grd.addColorStop(1, "#fff0");
+        }
+        values.shift();
+        values.push(+speed.value);
+        ctx.clearRect(0, 0, graph.width, graph.height);
+        ctx.beginPath();
+        for (let i = 0; i < values.length; i++) {
+          let x = (graph.width / (values.length - 1)) * i;
+          let y =
+            (1 - (values[i] - +speed.min) / (+speed.max - +speed.min)) *
+              graph.height *
+              0.95 +
+            graph.height * 0.025;
+          ctx[i == 0 ? "moveTo" : "lineTo"](x, y);
+        }
+        ctx.strokeStyle = "#fffc";
+        ctx.lineWidth = 2 * devicePixelRatio;
+        ctx.lineJoin = "round";
+        ctx.stroke();
+        ctx.fillStyle = grd;
+        ctx.lineTo(graph.width, graph.height);
+        ctx.lineTo(0, graph.height);
+        ctx.closePath();
+        ctx.fill();
+      }, 1000 / 60);
       const nosleep = new NoSleep();
       const updateS = () => {
         s = +speed.value;
-        s = s < 95 ? (s < 45 ? 0 : s) : 1000;
+        s = s < 45 ? 0 : s
         if (window.map && window.map.get("level") != +speed.value) {
           window.map.set("level", +speed.value);
         }
       };
-      speed.oninput = () => {
-        if (vibing && s >= 95) {
-          clearTimeout(vibing);
-          updateS();
-          vibe();
-        } else {
-          updateS();
-        }
-      };
       function vibe() {
         window.navigator.vibrate(s);
-        vibing = setTimeout(() => vibe(s), s);
+        if (!vibing) return;
+        vibing = setTimeout(() => vibe(s), s + 0.5);
       }
       function toggle() {
         console.log(vibing);
         if (vibing) {
           nosleep.disable();
-          clearTimeout(vibing);
-          window.navigator.vibrate(0);
+          try {
+            clearTimeout(vibing);
+          } catch (e) {}
           vibing = false;
           this.textContent = "Enable Vibration";
         } else {
           nosleep.enable();
-          updateS();
-          clearTimeout(vibing);
+          try {
+            clearTimeout(vibing);
+          } catch (e) {}
+          vibing = true;
           vibe();
           this.textContent = "Disable Vibration";
         }
@@ -444,7 +584,7 @@
         map.observe(() => {
           if (map.get("level") != s) {
             speed.value = map.get("level");
-            speed.oninput();
+            updateS();
           }
         });
         window.Y = Y;
